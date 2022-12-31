@@ -42,7 +42,6 @@ enum custom_keycodes {
     EISU,
     KANA,
     RGBRST,
-    NOREMAP,
 	MOVE_LEFT,
 	MOVE_RIGHT,
 	MOV_L_NERD,
@@ -113,16 +112,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------.             ,-----------------------------------------.
      * |   ~  |   !  |   @  |   #  |   $  |   %  |             |   ^  |   &  |   *  |   (  |   )  | Del  |
      * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-     * |      |  F1  |  F2  |  F3  |  F4  |  F5  |             |  F6  |   _  |   +  |   {  |   }  |  |   |
+     * |      |      |      |      |      |      |             |      |   _  |   +  |   {  |   }  |  |   |
      * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-     * |      |  F7  |  F8  |  F9  |  F10 |  F11 |             |  F12 |      | PrSc | Home | End  |      |
+     * |      |      |      |      |      |      |             |      |      | PrSc | Home | End  |      |
      * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
      * |      |      |      |      |      |      |      |      |      |      | Next | Vol- | Vol+ | Play |
      * `-------------------------------------------------------------------------------------------------'
      */
     [_LOWER] = LAYOUT(  KC_GRV,     KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                               KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       _______, \
-                        KC_CLCK,    _______,    _______,    _______,    _______,    MOVE_LEFT,                          MOVE_RIGHT, KC_MINS,    KC_PPLS,    KC_LBRC,    KC_RBRC,    KC_QUOT, \
-                        _______,    _______,    _______,    _______,    _______,    MOV_L_NERD,                         MOV_R_NERD, KC_UNDS,    KC_EQL,     _______,    KC_BSLS,    _______, \
+                        KC_CLCK,    _______,    KC_INS,     KC_HOME,    KC_PGUP,    MOVE_LEFT,                          MOVE_RIGHT, KC_MINS,    KC_PPLS,    KC_LBRC,    KC_RBRC,    KC_QUOT, \
+                        _______,    _______,    KC_DEL,     KC_END,     KC_PGDN,    MOV_L_NERD,                         MOV_R_NERD, KC_UNDS,    KC_EQL,     _______,    KC_BSLS,    _______, \
                         _______,    _______,    _______,    _______,    _______,    _______,    _______,    KC_HANJ,    _______,    KC_HAEN,    _______,    _______,    _______,    _______),
 
     /* Raise
@@ -314,19 +313,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 RGB_current_mode = rgblight_config.mode;
             }
 #endif
-            break;
-        case NOREMAP:
-            if (record->event.pressed)
-			{
-            // when keycode QMKBEST is pressed
-                SEND_STRING("nnoremap n j\nnoremap e k\nnoremap i l\nnoremap j e\nnoremap k n\nnoremap l i\nnoremap L I\nnoremap J E\nnoremap K N\nnoremap gj ge");
-            }
-			else
-			{
-                // when keycode QMKBEST is released
-            }
             return false;
-         case MOVE_LEFT:
+            break;
+        case MOVE_LEFT:
             if (record->event.pressed)
 			{
                 SEND_STRING(SS_LGUI("["));
