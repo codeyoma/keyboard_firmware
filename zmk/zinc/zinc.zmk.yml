@@ -1,0 +1,12 @@
+file_format: "1"
+id: zinc
+name: Zinc
+type: shield
+url: https://github.com/qmk/qmk_firmware/tree/master/keyboards/zinc/
+requires: [pro_micro]
+features:
+  - keys
+  - underglow
+siblings:
+  - zinc_left
+  - zinc_right
