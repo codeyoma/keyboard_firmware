@@ -69,10 +69,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-------------------------------------------------------------------------------------------------'
      */
 
-    [_QWERTY] = LAYOUT( KC_GESC,    KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                  KC_Y,   KC_U,   KC_I,        KC_O,   KC_P,       KC_BSPC, \
+    [_QWERTY] = LAYOUT( QK_GESC,    KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                  KC_Y,   KC_U,   KC_I,        KC_O,   KC_P,       KC_BSPC, \
                         KC_TAB,     KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                  KC_H,   KC_J,   KC_K,        KC_L,   KC_SCLN,    KC_ENT, \
                         KC_LSFT,    KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,                  KC_N,   KC_M,   KC_COMM,     KC_DOT, KC_SLSH,    KC_RSFT, \
-                        KC_LCTL, KC_LALT, ADJUST,KC_APFN,KC_LGUI, KC_SPC,   LOWER,  RAISE, KC_SPC, KC_RGUI,KC_LEFT,     KC_DOWN,KC_UP,      KC_RGHT),
+                        KC_LCTL, KC_LALT, ADJUST,KC_LALT,KC_LGUI, KC_SPC,   LOWER,  RAISE, KC_SPC, KC_RGUI,KC_LEFT,     KC_DOWN,KC_UP,      KC_RGHT),
     /* Colemak
      * ,-----------------------------------------.             ,-----------------------------------------.
      * | Tab  |   Q  |   W  |   F  |   P  |   G  |             |   J  |   L  |   U  |   Y  |   ;  | Bksp |
@@ -84,10 +84,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |Adjust| Esc  | Alt  | GUI  | EISU |Lower |Space |Space |Raise | KANA | Left | Down |  Up  |Right |
      * `-------------------------------------------------------------------------------------------------'
      */
-    [_COLEMAK] = LAYOUT(KC_GESC,    KC_Q,   KC_W,   KC_F,   KC_P,   KC_G,                   KC_J,   KC_L,   KC_U,   KC_Y,   KC_SCLN,    KC_BSPC, \
+    [_COLEMAK] = LAYOUT(QK_GESC,    KC_Q,   KC_W,   KC_F,   KC_P,   KC_G,                   KC_J,   KC_L,   KC_U,   KC_Y,   KC_SCLN,    KC_BSPC, \
                         KC_TAB,     KC_A,   KC_R,   KC_S,   KC_T,   KC_D,                   KC_H,   KC_N,   KC_E,   KC_I,   KC_O,       KC_ENT, \
                         KC_LSFT,    KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,                   KC_K,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,    KC_RSFT, \
-                        KC_LCTL, KC_LALT, ADJUST,KC_APFN,KC_LGUI, KC_SPC,   LOWER,  RAISE,  KC_SPC, KC_RGUI,KC_LEFT,KC_DOWN,KC_UP,      KC_RGHT),
+                        KC_LCTL, KC_LALT, ADJUST,KC_LALT,KC_LGUI, KC_SPC,   LOWER,  RAISE,  KC_SPC, KC_RGUI,KC_LEFT,KC_DOWN,KC_UP,      KC_RGHT),
 
     /* Dvorak
      * ,-----------------------------------------.             ,-----------------------------------------.
@@ -120,9 +120,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-------------------------------------------------------------------------------------------------'
      */
     [_LOWER] = LAYOUT(  KC_GRV,     KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                               KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       _______, \
-                        KC_CLCK,    _______,    KC_INS,     KC_HOME,    KC_PGUP,    MOVE_LEFT,                          MOVE_RIGHT, KC_MINS,    KC_PPLS,    KC_LBRC,    KC_RBRC,    KC_QUOT, \
+                        KC_CAPS,    _______,    KC_INS,     KC_HOME,    KC_PGUP,    MOVE_LEFT,                          MOVE_RIGHT, KC_MINS,    KC_PPLS,    KC_LBRC,    KC_RBRC,    KC_QUOT, \
                         _______,    _______,    KC_DEL,     KC_END,     KC_PGDN,    MOV_L_NERD,                         MOV_R_NERD, KC_UNDS,    KC_EQL,     _______,    KC_BSLS,    _______, \
-                        _______,    _______,    _______,    _______,    _______,    _______,    _______,    KC_HANJ,    _______,    KC_HAEN,    _______,    _______,    _______,    _______),
+                        _______,    _______,    _______,    _______,    _______,    _______,    _______,    KC_INT2,    _______,    KC_INT1,    _______,    _______,    _______,    _______),
 
     /* Raise
      * ,-----------------------------------------.             ,-----------------------------------------.
@@ -151,9 +151,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |      |      |      |      |      |      |      |      |      |      | MODE | HUE- | SAT- | VAL- |
      * `-------------------------------------------------------------------------------------------------'
      */
-    [_ADJUST] = LAYOUT( _______,    _______,    _______,    _______,    RESET,      _______,                            RGB_M_SN,   RGB_M_SW,   RGB_M_G,    RGB_M_T,    RGB_M_P,    RGB_TOG,\
-                        _______,    MU_ON,      CK_TOGG,    CK_UP,      AU_ON,      _______,                            RGB_M_K,    RGB_M_B,    RGB_MOD,    RGB_HUI,    RGB_SAI,    RGB_VAI,\
-                        QWERTY,     MU_OFF,     MU_MOD,     CK_DOWN,    AU_OFF,     COLEMAK,                            RGB_M_X,    RGB_M_R,    RGB_RMOD,   RGB_HUD,    RGB_SAD,    RGB_VAD,\
+    [_ADJUST] = LAYOUT(  QK_RBT,    QWERTY,     COLEMAK,    MU_TOGG,    CK_TOGG,    AU_TOGG,                            RGB_M_SN,   RGB_M_SW,   RGB_M_G,    RGB_RMOD,    RGB_MOD,    RGB_TOG,\
+                        _______,    _______,    _______,    MU_NEXT,    CK_UP,      AU_PREV,                            RGB_M_K,    RGB_M_B,    RGB_M_T,    RGB_HUI,    RGB_SAI,    RGB_VAI,\
+                        _______,    _______,    _______,    _______,    CK_DOWN,    AU_NEXT,                            RGB_M_X,    RGB_M_R,    RGB_M_P,   RGB_HUD,    RGB_SAD,    RGB_VAD,\
                         _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    RGBRST)};
 
 #ifdef AUDIO_ENABLE
@@ -284,24 +284,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case EISU:
             if (record->event.pressed) {
                 if (keymap_config.swap_lalt_lgui == false) {
-                    register_code(KC_LANG2);
+                    register_code(KC_INT2);
                 } else {
                     SEND_STRING(SS_LALT("`"));
                 }
             } else {
-                unregister_code(KC_LANG2);
+                unregister_code(KC_INT2);
             }
             return false;
             break;
         case KANA:
             if (record->event.pressed) {
                 if (keymap_config.swap_lalt_lgui == false) {
-                    register_code(KC_LANG1);
+                    register_code(KC_INT1);
                 } else {
                     SEND_STRING(SS_LALT("`"));
                 }
             } else {
-                unregister_code(KC_LANG1);
+                unregister_code(KC_INT1);
             }
             return false;
             break;
