@@ -23,4 +23,4 @@ IOS_DEVICE_ENABLE = yes      # connect to IOS device (iPad,iPhone)
 
 # convert Helix-specific options (that represent combinations of standard options)
 #   into QMK standard options.
-include $(strip $(KEYBOARD_LOCAL_FEATURES_MK))
+# include $(strip $(KEYBOARD_LOCAL_FEATURES_MK))
