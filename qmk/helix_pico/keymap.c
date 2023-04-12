@@ -30,7 +30,8 @@ enum layer_number {
     _LOWER,
     _RAISE,
     _ADJUST,
-    _YOMA
+    _YOMA_1,
+    _YOMA_2,
 };
 
 enum custom_keycodes {
@@ -39,7 +40,8 @@ enum custom_keycodes {
     LOWER,
     RAISE,
     ADJUST,
-    YOMA,
+    YOMA_1,
+	YOMA_2,
     BACKLIT,
     EISU,
     KANA,
@@ -67,15 +69,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|             |------+------+------+------+------+------|
      * | Shift|   Z  |   X  |   C  |   V  |   B  |             |   N  |   M  |   ,  |   .  |   /  | Shift|
      * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-     * | Ctlr | Alt  |Adjust| Yoma | GUI  |Space |Lower |Raise |Space | GUI  | Yoma | GUI  | Alt  | Ctrl |
+     * | Ctlr | Alt  |Adjust|Yoma_1| GUI  |Space |Lower |Raise |Space | GUI  |Yoma_1| Alt  | Ctrl |Yoma_2|
      * `-------------------------------------------------------------------------------------------------'
      */
 
     [_QWERTY] = LAYOUT(
         QK_GESC,   KC_Q,     KC_W,     KC_E,    KC_R,     KC_T,                     KC_Y,   KC_U,    KC_I,      KC_O,     KC_P,     KC_BSPC, \
-        KC_TAB,    KC_A,     KC_S,     KC_D,    KC_F,     KC_G,                     KC_H,   KC_J,    KC_K,      KC_L,     KC_SCLN,  KC_ENT, \
+        KC_TAB,    KC_A,     KC_S,     KC_D,    KC_F,     KC_G,                     KC_H,   KC_J,    KC_K,      KC_L,     KC_SCLN,  KC_ENT,  \
         KC_LSFT,   KC_Z,     KC_X,     KC_C,    KC_V,     KC_B,                     KC_N,   KC_M,    KC_COMM,   KC_DOT,   KC_SLSH,  KC_RSFT, \
-        KC_LCTL,   KC_LALT,  ADJUST,   YOMA,    KC_LGUI,  KC_SPC,    LOWER,  RAISE, KC_SPC, KC_RGUI, YOMA,      KC_RGUI,  KC_RALT,  KC_RCTL),
+        KC_LCTL,   KC_LALT,  ADJUST,   YOMA_1,  KC_LGUI,  KC_SPC,    LOWER,  RAISE, KC_SPC, KC_RGUI, YOMA_1,    KC_RALT,  KC_RCTL,  YOMA_2	 ),
     /* Colemak
      * ,-----------------------------------------.             ,-----------------------------------------.
      * | GESC |   Q  |   W  |   F  |   P  |   G  |             |   J  |   L  |   U  |   Y  |   ;  | Bksp |
@@ -84,14 +86,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|             |------+------+------+------+------+------|
      * | Shift|   Z  |   X  |   C  |   V  |   B  |             |   K  |   M  |   ,  |   .  |   /  | Shift|
      * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-     * | Ctlr | Alt  |Adjust| Yoma | GUI  |Space |Lower |Raise |Space | GUI  | Yoma | GUI  | Alt  | Ctrl |
+     * | Ctlr | Alt  |Adjust|Yoma_1| GUI  |Space |Lower |Raise |Space | GUI  |Yoma_1| Alt  | Ctrl |Yoma_2|
      * `-------------------------------------------------------------------------------------------------'
      */
     [_COLEMAK] = LAYOUT(
         QK_GESC,    KC_Q,      KC_W,     KC_F,   KC_P,    KC_G,                      KC_J,   KC_L,    KC_U,    KC_Y,    KC_SCLN,  KC_BSPC, \
-        KC_TAB,     KC_A,      KC_R,     KC_S,   KC_T,    KC_D,                      KC_H,   KC_N,    KC_E,    KC_I,    KC_O,     KC_ENT, \
+        KC_TAB,     KC_A,      KC_R,     KC_S,   KC_T,    KC_D,                      KC_H,   KC_N,    KC_E,    KC_I,    KC_O,     KC_ENT,  \
         KC_LSFT,    KC_Z,      KC_X,     KC_C,   KC_V,    KC_B,                      KC_K,   KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT, \
-        KC_LCTL,   KC_LALT,  ADJUST,   YOMA,    KC_LGUI,  KC_SPC,    LOWER,  RAISE, KC_SPC, KC_RGUI, YOMA,      KC_RGUI,  KC_RALT,  KC_RCTL),
+        KC_LCTL,   KC_LALT,  ADJUST,   YOMA_1,  KC_LGUI,  KC_SPC,    LOWER,  RAISE, KC_SPC, KC_RGUI, YOMA_1,    KC_RALT,  KC_RCTL,  YOMA_2 ),
 
     /* Lower
      * ,-----------------------------------------.             ,-----------------------------------------.
@@ -144,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,    _______,    _______,    _______,    CK_DOWN,    AU_NEXT,                            RGB_M_X,    RGB_M_R,    RGB_M_P,   RGB_HUD,    RGB_SAD,    RGB_VAD,\
         _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    RGBRST),
 
-    /* Yoma (For Macro)
+    /* Yoma_1 (For Macro)
      * ,-----------------------------------------.             ,-----------------------------------------.
      * |      |      |      |      |      |      |             |      |      |      |      |      |      |
      * |------+------+------+------+------+------|             |------+------+------+------+------+------|
@@ -155,11 +157,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
      * `-------------------------------------------------------------------------------------------------'
      */
-    [_YOMA] = LAYOUT(
+    [_YOMA_1] = LAYOUT(
+        _______,    _______,    _______,    _______,    _______,    _______,                            _______,    _______,    _______,    _______,    _______,    _______,\
+        _______,    _______,    _______,    _______,    _______,    _______,                            _______,    _______,    _______,    _______,    _______,    _______,\
+        _______,    _______,    _______,    _______,    _______,    _______,                            _______,    _______,    _______,    _______,    _______,    _______,\
+        _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______),
+
+    /* Yoma_2 (For Macro)
+     * ,-----------------------------------------.             ,-----------------------------------------.
+     * |      |      |      |      |      |      |             |      |      |      |      |      |      |
+     * |------+------+------+------+------+------|             |------+------+------+------+------+------|
+     * |      |      |      |      |      |      |             |      |      |      |      |      |      |
+     * |------+------+------+------+------+------|             |------+------+------+------+------+------|
+     * |      |      |      |      |      |      |             |      |      |      |      |      |      |
+     * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
+     * |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+     * `-------------------------------------------------------------------------------------------------'
+     */
+    [_YOMA_2] = LAYOUT(
         _______,    _______,    _______,    _______,    _______,    _______,                            _______,    _______,    _______,    _______,    _______,    _______,\
         _______,    _______,    _______,    _______,    _______,    _______,                            _______,    _______,    _______,    _______,    _______,    _______,\
         _______,    _______,    _______,    _______,    _______,    _______,                            _______,    _______,    _______,    _______,    _______,    _______,\
         _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______)
+
 };
 
 #ifdef AUDIO_ENABLE
@@ -273,14 +293,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
             break;
 
-        case YOMA:
+        case YOMA_1:
             if (record->event.pressed) {
-                layer_on(_YOMA);
+                layer_on(_YOMA_1);
             } else {
-                layer_off(_YOMA);
+                layer_off(_YOMA_1);
             }
             return false;
             break;
+
+        case YOMA_2:
+            if (record->event.pressed) {
+                layer_on(_YOMA_2);
+            } else {
+                layer_off(_YOMA_2);
+            }
+            return false;
+            break;
+
 
             // led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
         case RGB_MOD:
